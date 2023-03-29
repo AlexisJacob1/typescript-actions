@@ -57,6 +57,7 @@ export class PullRequestTagger {
 
 	private addTagToPullRequest(idPullRequest: number): Promise<void> {
 		return new Promise<void>((resolve, reject) => {
+			core.debug("Adding label to pull request");
 			this.client.rest.issues.addLabels({
 				owner: github.context.repo.owner,
 				repo: github.context.repo.repo,
@@ -73,6 +74,7 @@ export class PullRequestTagger {
 
 	private removeTagFromPullRequest(idPullRequest: number): Promise<void> {
 		return new Promise<void>((resolve, reject) => {
+			core.debug("Removing label from pull request");
 			this.client.rest.issues.removeLabel({
 				owner: github.context.repo.owner,
 				repo: github.context.repo.repo,

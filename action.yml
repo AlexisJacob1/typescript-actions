@@ -1,6 +1,6 @@
 name: 'request-labeler'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+description: 'Will automatically tag pull requests who are targeting branches with name like prod'
+author: 'Alexis Jacob'
 inputs:
   repo-token:
     description: 'The GitHub token used to manage labels'

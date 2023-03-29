@@ -40,17 +40,6 @@ const pull_request_tagger_1 = __nccwpck_require__(3694);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            // const ms: string = core.getInput('milliseconds')
-            // core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
-            // core.debug(new Date().toTimeString())
-            // await wait(parseInt(ms, 10))
-            // core.debug(new Date().toTimeString())
-            // core.setOutput('time', new Date().toTimeString())
-            // const payload = JSON.stringify(github.context.payload, undefined, 4)
-            // console.log(`The event payload: ${payload}`);
-            // const pullRequestInfos = JSON.stringify(github.context.payload.pull_request, undefined, 4)
-            // console.log(`The PR payload: ${pullRequestInfos}`);
-            // console.log("ended jobs");
             new pull_request_tagger_1.PullRequestTagger().tagPullRequest()
                 .then(() => {
                 console.log("Finised job");
@@ -142,6 +131,7 @@ class PullRequestTagger {
     }
     addTagToPullRequest(idPullRequest) {
         return new Promise((resolve, reject) => {
+            core.debug("Adding label to pull request");
             this.client.rest.issues.addLabels({
                 owner: github.context.repo.owner,
                 repo: github.context.repo.repo,
@@ -157,6 +147,7 @@ class PullRequestTagger {
     }
     removeTagFromPullRequest(idPullRequest) {
         return new Promise((resolve, reject) => {
+            core.debug("Removing label from pull request");
             this.client.rest.issues.removeLabel({
                 owner: github.context.repo.owner,
                 repo: github.context.repo.repo,
