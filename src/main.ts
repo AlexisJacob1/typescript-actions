@@ -17,7 +17,10 @@ async function run(): Promise<void> {
   	console.log(`The event payload: ${payload}`);
 
 	const pullRequestInfos = JSON.stringify(github.context.payload.pull_request, undefined, 4)
-  	console.log(`The event payload: ${pullRequestInfos}`);
+  	console.log(`The PR payload: ${pullRequestInfos}`);
+
+	console.log("ended jobs");
+	
 
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
