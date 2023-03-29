@@ -21,7 +21,14 @@ async function run(): Promise<void> {
 		// console.log(`The PR payload: ${pullRequestInfos}`);
 		
 		// console.log("ended jobs");
-		new PullRequestTagger().tagPullRequest();		
+		new PullRequestTagger().tagPullRequest()
+		.then(() => {
+			console.log("Finised job");
+		})
+		.catch((err) => {
+			throw new Error(err)
+		});
+		
 	} catch (error) {
 		if (error instanceof Error) core.setFailed(error.message)
 	}

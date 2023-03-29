@@ -13,8 +13,3 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./
-        id: hello
-        with:
-          milliseconds: 5000
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
