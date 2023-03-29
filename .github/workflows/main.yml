@@ -1,6 +1,6 @@
 name: 'check-branches'
 on:
-  - pull_request_target
+  pull_request_target
 
 jobs:
   build:
@@ -13,5 +13,8 @@ jobs:
       - run: |
           npm install
       - uses: ./
+        id: hello
         with:
           milliseconds: 5000
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
