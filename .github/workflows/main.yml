@@ -1,0 +1,17 @@
+name: 'check-branches'
+on:
+  - pull_request_target
+
+jobs:
+  build:
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          npm install
+      - uses: ./
+        with:
+          milliseconds: 5000

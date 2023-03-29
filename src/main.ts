@@ -13,11 +13,14 @@ async function run(): Promise<void> {
 
     core.setOutput('time', new Date().toTimeString())
 
-	// const payload = JSON.stringify(github.context.payload, undefined, 4)
-  	// console.log(`The event payload: ${payload}`);
+	const payload = JSON.stringify(github.context.payload, undefined, 4)
+  	console.log(`The event payload: ${payload}`);
 
 	const pullRequestInfos = JSON.stringify(github.context.payload.pull_request, undefined, 4)
   	console.log(`The PR payload: ${pullRequestInfos}`);
+
+	console.log("ended job");
+	
 
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
