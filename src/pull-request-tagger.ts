@@ -1,22 +1,14 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
+import { BaseGithubClient } from './utils/github-client';
 
-export class PullRequestTagger {
-
-	private client: ReturnType<typeof github.getOctokit>;
+export class PullRequestTagger extends BaseGithubClient {
 
 	/**
 	 *
 	 */
 	constructor() {
-
-		const token: string | undefined = core.getInput('repo-token');
-
-		if (!token) {
-			throw new Error("Invalid token");
-		}
-
-		this.client = github.getOctokit(token);
+		super();
 	}
 
 	tagPullRequest(): Promise<void> {
