@@ -36,9 +36,9 @@ export class PullRequestTagger {
 				let actionToExecute: Promise<void>;
 
 				if(new RegExp(/prod.*/gi).test(pullRequest.data.base.label)) {
-					actionToExecute = this.addTagToPullRequest(currentPullRequest.number);
+					actionToExecute = this.addTagToPullRequest(currentPullRequest.number, pullRequest.data.title);
 				} else {
-					actionToExecute = this.removeTagFromPullRequest(currentPullRequest.number);
+					actionToExecute = this.removeTagFromPullRequest(currentPullRequest.number, pullRequest.data.title);
 				}
 
 				actionToExecute
@@ -55,7 +55,7 @@ export class PullRequestTagger {
 		})
 	}
 
-	private addTagToPullRequest(idPullRequest: number): Promise<void> {
+	private addTagToPullRequest(idPullRequest: number, pullRequestName: string): Promise<void> {
 		return new Promise<void>((resolve, reject) => {
 			core.debug("Adding label to pull request");
 			this.client.rest.issues.addLabels({
@@ -72,7 +72,7 @@ export class PullRequestTagger {
 		})
 	}
 
-	private removeTagFromPullRequest(idPullRequest: number): Promise<void> {
+	private removeTagFromPullRequest(idPullRequest: number, pullRequestName: string): Promise<void> {
 		return new Promise<void>((resolve, reject) => {
 			core.debug("Removing label from pull request");
 			this.client.rest.issues.removeLabel({
