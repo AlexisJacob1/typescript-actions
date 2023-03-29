@@ -45,7 +45,7 @@ export class PullRequestTagger {
 				.then(() => resolve())
 				.catch((err) => {
 					reject(err);
-				})
+				});
 			})
 			.catch((err) => {
 				reject(err);
