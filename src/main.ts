@@ -4,9 +4,7 @@ import { PullRequestTagger } from './pull-request-tagger'
 async function run(): Promise<void> {
 	try {
 		new PullRequestTagger().tagPullRequest()
-		.then(() => {
-			console.log("Job completed successfully");
-		})
+		.then(() => {})
 		.catch((err) => {
 			throw new Error(err)
 		});
