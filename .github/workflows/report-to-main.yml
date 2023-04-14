@@ -1,0 +1,16 @@
+name: 'report-to-main'
+on:
+  pull_request:
+    branches: 
+      - 'prod*'
+    types: [synchronize, opened, reopened, edited, closed]
+
+jobs:
+  tag-for-report:
+    if: github.event.pull_request.merged == true
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: AlexisJacob1/cherry-picker@0.1.0
