@@ -14,3 +14,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: AlexisJacob1/cherry-picker@0.1.0
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
