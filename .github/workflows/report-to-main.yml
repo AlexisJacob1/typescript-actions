@@ -13,6 +13,6 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - uses: AlexisJacob1/cherry-picker@0.1.0
+      - uses: AlexisJacob1/cherry-picker@v0.1.1
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
