@@ -10,7 +10,7 @@ export class PullRequestTagger {
 	constructor() {
 		const token: string | undefined = core.getInput('repo-token');
 
-		if (!token) {
+		if (!token || token === '') {
 			throw new Error('Invalid token');
 		}
 
