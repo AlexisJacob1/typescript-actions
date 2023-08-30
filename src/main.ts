@@ -1,21 +1,15 @@
-import * as core from '@actions/core'
-import { PullRequestTagger } from './pull-request-tagger'
+import * as core from '@actions/core';
+import { PullRequestTagger } from './pull-request-tagger';
 
 async function run(): Promise<void> {
 	try {
-		new PullRequestTagger().tagPullRequest()
-		.then(() => {
-			console.log("Job completed successfully");
-		})
-		.catch((err) => {
-			throw new Error(err)
-		});
-
+		await new PullRequestTagger().tagPullRequest();
+		core.info('Job completed successfully');
 	} catch (error) {
 		if (error instanceof Error) {
-			core.setFailed(error.message)
+			core.setFailed(error.message);
 		}
 	}
 }
 
-run()
+run();
